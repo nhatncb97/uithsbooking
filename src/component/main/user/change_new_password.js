@@ -15,26 +15,25 @@ class reset_pass extends Component {
   }
   updatePass(userData) {
     this.props.dispatch(actions.updatePass(userData))
-      // .then(
-      //   changed => this.setState({
-      //     redirect: true
-      //   }),
-      //   detail => {
-      //     console.log(detail)
-      //     this.setState({
-      //     errors: detail
-      //   })}
-      // )
+    // .then(
+    //   changed => this.setState({
+    //     redirect: true
+    //   }),
+    //   detail => {
+    //     console.log(detail)
+    //     this.setState({
+    //     errors: detail
+    //   })}
+    // )
   }
   // resetpass(userData) {
   //   const rsid = this.props.match.params.id;
   //   this.props.dispatch(actions.resetPass(userData, rsid))
   // }
   componentWillUpdate() {
-    
+
   }
   render() {
-    {console.log(this.props)}
     const { isUpdated, errors, isError } = this.props
     return (
       <main>
@@ -47,7 +46,7 @@ class reset_pass extends Component {
             {
               isUpdated &&
               <div className='alert alert-success'>
-                <p>Hãy kiểm tra email của bạn</p>
+                <p>Đã đổi mật khẩu thành công</p>
               </div>
             }
             {
@@ -56,8 +55,6 @@ class reset_pass extends Component {
                 <p>{errors.detail}</p>
               </div>
             }
-           
-            
             <NewPass submitCb={this.updatePass} errors={errors} />
 
           </div>
@@ -75,7 +72,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     errors: state.users.errors,
     isUpdated: state.users.isUpdated,
-    isError : state.users.isError
+    isError: state.users.isError
   }
 }
 export default connect(mapStateToProps)(reset_pass);

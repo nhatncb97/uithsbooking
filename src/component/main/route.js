@@ -29,6 +29,7 @@ import change_new_pass from "./user/change_new_password";
 import ResetPass from './user/reset_pass'
 
 import RentalManage from './rental/rental-manage/RentalManage'
+
 class Routerr extends Component {
     render() {
         return (

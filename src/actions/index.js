@@ -1,7 +1,7 @@
 import axios from 'axios';
 import authService from 'services/auth-service';
 import axiosService from 'services/axios-service';
-import { toast } from "react-toastify";
+import { startSubmit, stopSubmit } from 'redux-form';
 
 import {
   FETCH_RENTAL_BY_ID_SUCCESS,
@@ -25,8 +25,13 @@ import {
   FETCH_USER_BOOKINGS_SUCCESS,
   FETCH_USER_BOOKINGS_FAIL,
   FETCH_USER_BOOKINGS_INIT,
+  CREATE_BOOKING_FAIL,
+  CREATE_BOOKING_SUCCESS,
+  RESET_BOOKING_STATE,
   UPDATE_RENTAL_SUCCESS,
   UPDATE_RENTAL_FAIL,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAILURE,
   RESET_RENTAL_ERRORS,
   RELOAD_MAP,
   RELOAD_MAP_FINISH
@@ -109,16 +114,15 @@ export const fetchRentalById = (rentalId) => {
   }
 }
 
-export const createRental = (rentalData, rentalImages) => {
+export const createRental = (rentalData) => {
+  console.log(rentalData)
   const formData = new FormData();
   for (var key in rentalData) {
     formData.append(key, rentalData[key]);
-  } 
-  formData.append('image', rentalImages[0]);
-  formData.append('image', rentalImages[1]);
-  formData.append('image', rentalImages[2]);
-  formData.append('image', rentalImages[3]);
-  formData.append('image', rentalImages[4]);
+  }
+  rentalData.images.map(i => {
+    formData.append('image', i)
+  })
   return axiosInstance.post('/rentals', formData)
     .then(
       res => res.data,
@@ -223,13 +227,13 @@ const loginFailure = (errors) => {
     type: LOGIN_FAILURE,
     errors
   }
-  
+
 }
 
 export const register = (userData) => {
   return axios.post('/api/v1/users/register', userData).then(
     res => res.data,
-    err => Promise.reject(err.response.data.errors)
+    err => Promise.reject(err.response.data.errors),
   )
 }
 
@@ -243,15 +247,24 @@ export const checkAuthState = () => {
 
 export const login = (userData) => {
   return dispatch => {
+    dispatch(startSubmit('loginForm'))
     return axios.post('/api/v1/users/login', userData)
       .then(res => res.data)
       .then(token => {
         authService.saveToken(token);
         dispatch(loginSuccess());
+        dispatch(stopSubmit('loginForm'))
       })
-      .catch(({ response }) => {
+      .catch((
+        { response }) => {
         dispatch(loginFailure(response.data.errors));
+        dispatch(stopSubmit('loginForm'))
+        return response.data
       })
+    // .then(errors => {
+    //   console.log(errors)
+    //   // dispatch(loginFailure(response.data.errors));
+    // })
   }
 }
 
@@ -260,7 +273,6 @@ export const fetchUserById = (userId) => {
     dispatch(fetchUserByIdInit());
     axiosInstance.get(`/users/${userId}`)
       .then(res => {
-        console.log(res.data)
         dispatch(fetchUserByIdSuccess(res.data))
       })
     // .then(foundUser => dispatch(fetchUserByIdSuccess(foundUser)));
@@ -301,13 +313,18 @@ const sendMailSuccess = () => {
 }
 export const sendMail = (email) => {
   return dispatch => {
+    dispatch(startSubmit('forgotForm'))
     return axios.post('/api/v1/users/forgotpass', email)
       .then(response => {
         dispatch(sendMailSuccess())
+        dispatch(stopSubmit('forgotForm'))
       })
       .catch(({ response }) => {
         dispatch(sendMailFailure(response.data.errors))
+        dispatch(stopSubmit('forgotForm'))
       })
+
+
   }
 }
 
@@ -328,7 +345,6 @@ export const resetPass = (userData, id) => {
   return (dispatch) => {
     return axios.post(`/api/v1/users/reset/${id}`, userData)
       .then(res => {
-        console.log(res)
         dispatch(resetSuccess())
       })
       .catch(response => {
@@ -349,20 +365,48 @@ const updatePassFailure = (errors) => {
     errors
   }
 }
-
+const updateUserSuccess = (data) => {
+  return {
+    type: UPDATE_USER_SUCCESS,
+    data
+  }
+}
+const updateUserFailure = (errors) => {
+  return {
+    type: UPDATE_USER_FAILURE,
+    errors
+  }
+}
+export const updateUserInfo = (userData) => {
+  return dispatch => {
+    return axiosInstance.post('/users/updateinfo', userData)
+      .then(res => {
+        dispatch(updatePassSuccess(res.data))
+      })
+      .catch(({ response }) => {
+        dispatch(updatePassFailure(response.data.errors))
+      })
+  }
+}
 export const updatePass = (userData) => {
-  
+
   userData._id = authService.getId();
   console.log(userData);
   return (dispatch) => {
+    dispatch(startSubmit('newPassForm'))
+    return axiosInstance.post('/users/change', userData)
+      .then(res => {
+        dispatch(stopSubmit('newPassForm'))
+        dispatch(updatePassSuccess())
+      })
+      .catch(errors => {
+        dispatch(stopSubmit('newPassForm'))
+        dispatch(updatePassFailure(errors.response.data.errors[0]))
+      }
+      )
+  }
 
-  return  axiosInstance.post('/users/change',userData)
-  .then(res => {dispatch(updatePassSuccess())})
-  .catch(errors =>
-    dispatch(updatePassFailure(errors.response.data.errors[0]))
 
-  )
-}
   // return (dispatch) => {
   //   return axiosInstance.post('/users/change', userData)
   //   .then(res => {
@@ -398,12 +442,40 @@ export const uploadAvatar = (file) => {
     .catch(({ response }) => Promise.reject(response.data.errors))
 
 }
-export const createBooking = (booking) => {
-  return axiosInstance.post('/bookings/book', booking)
-    .then(res => res.data)
-    .catch(({ response }) => Promise.reject(response.data.errors))
-}
 
+const createBookingFail = (errors) => {
+  return {
+    type: CREATE_BOOKING_FAIL,
+    errors
+  }
+}
+const createBookingSuccess = (data) => {
+  return {
+    type: CREATE_BOOKING_SUCCESS,
+    data
+  }
+}
+const resetBookingState = () => {
+  return {
+    type: RESET_BOOKING_STATE
+  }
+}
+export const createBooking = (booking) => {
+  return (dispatch) => {
+    dispatch(resetBookingState())
+    dispatch(startSubmit('rentalDateForm'))
+    return axiosInstance.post('/bookings/book', booking)
+      .then(res => {
+        dispatch(stopSubmit('rentalDateForm'))
+        dispatch(createBookingSuccess(res.data))
+      })
+      .catch(({ response }) => {
+        console.log(response.data)
+        dispatch(stopSubmit('rentalDateForm'))
+        dispatch(createBookingFail(response.data.errors))
+      })
+  }
+}
 
 
 export const uploadImage = image => {

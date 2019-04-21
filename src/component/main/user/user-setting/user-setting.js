@@ -5,6 +5,7 @@ import authService from '../../../../services/auth-service';
 import UserAvatar from './user-avatar';
 import * as actions from 'actions'
 import { connect } from 'react-redux'
+import ChangNewPass from '../change_new_password'
 import { Link } from 'react-router-dom'
 import UserContentForm from './user-content-form'
 class userSetting extends Component {
@@ -13,8 +14,11 @@ class userSetting extends Component {
         this.options = ['Nam', 'Nữ']
         this.updateInfo = this.updateInfo.bind(this)
     }
-    updateInfo(){
-        
+    updateInfo(userData){
+        const user = this.props.users.data
+        console.log(user)
+        console.log(userData)
+        this.props.dispatch(actions.updateUserInfo(userData))
     }
     componentWillMount() {
         const userId = authService.getId();
@@ -34,7 +38,7 @@ class userSetting extends Component {
                                 <Tab tabFor="basic-tab-four" className="tabc"><i className="fa fa-lock" style={{ fontSize: "20px" }} /><h4 style={{ display: "inline-block", marginLeft: "10px" }}>Đổi mật khẩu</h4></Tab>
                             </TabList>
                             <TabPanel tabId="basic-tab-one">
-                                <UserContentForm user={this.props.users.data} submitCb={this.updateInfo} options={this.options} />
+                                <UserContentForm initialValues={user} user={this.props.users.data} submitCb={this.updateInfo} options={this.options} />
 
                             </TabPanel>
                             <TabPanel tabId="basic-tab-two">
@@ -74,11 +78,10 @@ class userSetting extends Component {
                             </TabPanel> */}
                             <TabPanel tabId="basic-tab-four">
                                 <br />
-                                <div className="usercontent">
-                                    <div>
-                                        <button type="submit" className="b b1 center_button">Nhấn vào đây để đổi mật khẩu</button>
-                                    </div>
-                                </div>
+                                    <ChangNewPass/>
+                                    {/* <div>
+                                    <Link to='/new_pass'><button type="submit" className="b b1 center_button">Nhấn vào đây để đổi mật khẩu</button></Link>
+                                    </div> */}
                                 <br />
                             </TabPanel>
                         </Tabs>

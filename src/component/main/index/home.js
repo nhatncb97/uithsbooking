@@ -16,7 +16,7 @@ class Home extends Component {
 
                         <div className="carousel-inner text-center home-inner" role="listbox">
                             <div className="item active">
-                                <img src={process.env.PUBLIC_URL+"/img/img_home/index_slide/1.png"} alt="Brandi Img 1" width="100%" />
+                                <img  src={process.env.PUBLIC_URL+"/img/img_home/index_slide/1.png"} alt="Brandi Img 1" width="100%" />
                             </div>
                             <div className="item">
                                 <img src="./img/img_home/index_slide/2.png" alt="Brandi Img 2" width="100%" />

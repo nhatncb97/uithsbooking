@@ -15,7 +15,6 @@ class reset_pass extends Component {
     }
     componentWillUpdate()
     {
-        console.log(this.props.isReset);
     }
     render() {
         const { isReset, errors } = this.props
@@ -30,8 +29,8 @@ class reset_pass extends Component {
                         {
 
                             isReset &&
-                            <div className='alert alert-success'>
-                                <p>Hãy kiểm tra email của bạn</p>
+                            <div className='boxtrue'>
+                                <p>Đã đổi mật khẩu thành công</p>
                             </div>
                         }
                         <ResetPass submitCb={this.resetpass} errors={errors} />

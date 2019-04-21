@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom'
-
+import { BwmResError } from '../shared/form/BwmResError'
 import LoginForm from './LoginForm';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
@@ -9,18 +9,30 @@ class Login extends Component {
     constructor() {
         super();
         this.loginUser = this.loginUser.bind(this);
+        this.state = {
+            errors: []
+        }
     }
     loginUser(userData) {
-
-        this.props.dispatch(actions.login(userData));
+        this.props.dispatch(actions.login(userData))
+            .then(
+                ({ errors }) => {
+                    this.setState({
+                        errors: errors
+                    })
+                }
+            )
+            .catch(err => err)
 
     }
     render() {
-        const { isAuth, errors } = this.props.auth;
+        const { isAuth } = this.props.auth;
+        const errors = this.state.errors;
         const { successRegister } = this.props.location.state || false;
         if (isAuth) {
             return <Redirect to={{ pathname: '/' }} />
         }
+
         return (
             <div>
                 <div className="bg">
@@ -41,7 +53,7 @@ class Login extends Component {
                                 </div>
                             }
                             <br />
-                            <LoginForm submitCb={this.loginUser} errors={errors}/>
+                            <LoginForm submitCb={this.loginUser} errors={errors} />
                         </div>
                     </div>
                 </div>

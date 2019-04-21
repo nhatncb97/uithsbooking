@@ -4,53 +4,61 @@ import RentalImages from './RentalImages';
 import { RentalAssets } from './RentalAssets';
 import { RentalInfo } from './RentalDetailInfo'
 import * as actions from 'actions';
-import Carousel from 'nuka-carousel';
-function afterSlide(currentSlide) {
-  const list = window.document.querySelector('.slider-list');
-  const nextSlide = list.childNodes[currentSlide];
-  list.style.height = nextSlide.offsetHeight + 'px';
-}
+import RentalDateForm from './RentalDateForm'
+import { startSubmit, stopSubmit } from 'redux-form'
 class RentalDetail extends Component {
 
   componentWillMount() {
     // Dispatch action
     window.scrollTo(0, 0)
-
     const rentalId = this.props.match.params.id;
-
     this.props.dispatch(actions.fetchRentalById(rentalId));
   }
   constructor(props) {
     super(props);
     this.state = {
-      startAt:null,
-      endAt:null,
-      guests: null
+      booked: false,
+      errors: []
     }
     this.book = this.book.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
-  book() {
+  book(bookData) {
+    console.log(bookData);
     const booking = {
-      startAt : this.state.startAt,
-      endAt : this.state.endAt,
-      guests : this.state.guests,
-      id : this.props.match.params.id,
-      price : this.props.rental.price
+      startAt: bookData.startAt,
+      endAt: bookData.endAt,
+      guests: bookData.guests,
+      id: this.props.match.params.id,
+      price: this.props.rental.price
     }
-    console.log(booking)
-    this.props.dispatch(actions.createBooking(booking))
-  }
-  handleChange(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      booked: false,
+      errors: []
     })
-  }
+    this.props.dispatch(actions.createBooking(booking))
+    // this.props.dispatch(startSubmit('rentalDateForm'))
+    // actions.createBooking(booking)
+    //   .then(res => {
+    //     (booked) => {
+    //       console.log(booked)
+    //       this.setState({ booked: booked })
+    //       this.props.dispatch(stopSubmit('rentalDateForm'))
+    //     },
+    //       (errors) => {
+    //         this.setState({ errors: errors })
+    //         console.log(this.state)
+    //         this.props.dispatch(stopSubmit('rentalDateForm'))
+    //       }
+    //   }
+    //   )
 
+  }
   render() {
-    {console.log(this.state)};
+    {console.log(this.props.booking)}
+    const errors = this.props.booking.errors
+    const isSuccess = this.props.booking.isSuccess
     return (
-      <div>
+      <div id="rent">
         <div className="container">
           <RentalImages image={this.props.rental.image} />
           <br />
@@ -106,24 +114,14 @@ class RentalDetail extends Component {
                   <h3 style={{ marginTop: "30px", paddingLeft: "35%" }}>Đặt chỗ</h3>
                 </div>
                 <hr />
-                <label>Ngày đến</label>
-                <input onChange={this.handleChange} type="date" className="form-control" id="start" name="startAt" />
-                <br />
-                <label>Ngày đi</label>
-                <input onChange={this.handleChange} type="date" className="form-control" id="end" name="endAt" />
-                <br />
-                <label>Số người ở</label>
-                <select name="guests" onChange={this.handleChange} className="form-control">
-                  <option selected disabled hidden>Nhấn để chọn</option>
-                  <option value="1">1 người</option>
-                  <option value="2">2 người</option>
-                  <option value="3">3 người</option>
-                  <option value="4">4 người</option>
-                  <option value="5">5 người</option>
-                </select>
+                {
+                  isSuccess &&
+                  <div className="boxtrue">Đã đặt phòng thành công</div>
+                }
+                <RentalDateForm submitCb={this.book} people={this.props.rental.people} errors={errors} />
+
                 <hr />
                 <br />
-                <button onClick={this.book} type="submit" className="btn btn-primary center_button" /*data-toggle="modal" data-target="#payment"*/>Thuê</button>
                 <br />
                 <br />
                 {/* <div className="modal fade" id="payment" role="dialog">
@@ -155,6 +153,7 @@ class RentalDetail extends Component {
 
 function mapStateToProps(state) {
   return {
+    booking: state.userBookings,
     rental: state.rental.data,
     errors: state.rental.errors
   }

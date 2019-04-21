@@ -16,12 +16,12 @@ class Header extends Component {
     }
     renderAuthButton(isAuth) {
         if (isAuth) {
-            return <button onClick={this.handleLogout} className="na-sign-in"><i className="fa fa-sign-out" /> ĐĂNG XUẤT</button>
+            return <button onClick={this.handleLogout} style={{marginBottom:"5px"}} className=" b b1 na-sign-in"><i className="fa fa-sign-out" /> ĐĂNG XUẤT</button>
         }
         return (
             //Fragment trả về nhiều thành phần mà không cần thêm gì vào DOM
             <React.Fragment>
-                <Link className="na-sign-in" to="/login"><i className="fa fa-user" /> ĐĂNG NHẬP</Link>
+                <Link className="na-sign-in"  to="/login"><i className="fa fa-user" /> ĐĂNG NHẬP</Link>
                 <a >/   </a>
                 <Link className="na-sign-in" to="/register"> <i className="fa fa-key" /> ĐĂNG KÝ</Link>
             </React.Fragment>
@@ -51,7 +51,7 @@ class Header extends Component {
                         <Link className="na-brand" to="/"><span>U</span>IT HomeStay<i className="fa fa-home top_logo_home" aria-hidden="true" /></Link>
                         <div className="navbar-right mg-top-10">
                             {isAuth &&
-                                <Link to='/user' className='nav-item nav-link'>{username}</Link>
+                                <Link to='/user' style={{marginRight:"20px",fontSize:"20px"}} className='nav-item nav-link'>{username}</Link>
                             }
                             {this.renderAuthButton(isAuth)}
                         </div>

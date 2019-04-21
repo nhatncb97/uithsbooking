@@ -1,6 +1,6 @@
 import React from 'react';
 import Carousel from 'nuka-carousel';
-import {VariableWidth} from '../rental-detail/RentalSlide'
+import { VariableWidth } from '../rental-detail/RentalSlide'
 function afterSlide(currentSlide) {
     const list = window.document.querySelector('.slider-list');
     const nextSlide = list.childNodes[currentSlide];
@@ -21,8 +21,8 @@ const settings = {
 export function RentalImages(props) {
     return (
         <div style={{ marginTop: "20px", marginBottom: "20px" }}>
-                    <VariableWidth rental={props.image} className="resize1" />
-                </div>
+            <VariableWidth rental={props.image} className="resize1" />
+        </div>
     )
 }
 export default RentalImages;

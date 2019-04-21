@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { BwmInput } from 'component/main/shared/form/BwmInput';
 import { BwmResError } from 'component/main/shared/form/BwmResError';
-import { required, minLength4 } from 'component/main/shared/form/validators';
+import { validate } from 'component/main/shared/form/validators';
 
 const ForgotForm = props => {
     const { handleSubmit, pristine, submitting, submitCb, valid, errors } = props
@@ -18,7 +18,6 @@ const ForgotForm = props => {
                     className='field__input a-field__input'
                     id='newPassword'
                     component={BwmInput}
-                    validate={[required, minLength4]}
                 />
                 <Field
                     name="newPasswordConfirmation"
@@ -27,7 +26,6 @@ const ForgotForm = props => {
                     className='field__input a-field__input'
                     id='newPasswordConfirmation'
                     component={BwmInput}
-                    validate={[required, minLength4]}
                 />
             </div>
 
@@ -41,5 +39,6 @@ const ForgotForm = props => {
 }
 
 export default reduxForm({
-    form: 'forgotForm'
+    form: 'forgotForm',
+    validate
 })(ForgotForm)

@@ -30,7 +30,6 @@ class List_book extends Component {
                                     this.props.userBookings.map((i, index) => {
                                         return (<Fragment key={index}>
                                             <BookingManageCard rental={i} key={index} />
-                                            <button onClick={this.bookingDetail} className="form-control"/>
                                         </Fragment>)
                                     })
                                 }

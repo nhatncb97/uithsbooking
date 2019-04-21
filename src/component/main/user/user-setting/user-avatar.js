@@ -15,12 +15,10 @@ class UserAvatar extends Component {
         }
     }
     onImageDrop(selectedFile) {
-        console.log(selectedFile)
         this.setState({
             imageFiles: selectedFile[0],
             isChange: true
         })
-        console.log(this.state.imageFiles)
         const myFilereader = new FileReader();
         myFilereader.addEventListener("load", () => {
             this.setState({
@@ -28,16 +26,13 @@ class UserAvatar extends Component {
             })
         }, false)
         myFilereader.readAsDataURL(this.state.imageFiles);
-        console.log(this.state)
     }
     upload() {
         const file = this.state.imageFiles;
-        console.log(file);
         this.setState({
             isUpLoading: true
         })
         actions.uploadAvatar(file).then(changed => {
-            console.log(changed)
             this.setState({
                 isUpLoading: false,
                 isSuccess: true,

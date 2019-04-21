@@ -1,21 +1,20 @@
 import React from 'react';
 
-export const Input = ({
+export const Checkbox = ({
     input,
     label,
     type,
     symbol,
-    className,
     meta: { touched, error, warning }
 }) => (
-        <div className='form-group'>
-            <label>{label}</label>
+        <div>
+            
                 {symbol &&
                     <div className='input-group-prepend'>
                         <div className='input-group-text'>{symbol}</div>
                     </div>
                 }
-                <input {...input} type={type} className={className} />
+                <input {...input} type={type} /><label> {label}</label>
             {touched &&
                 ((error && <div className='validation'>{error}</div>))}
         </div>

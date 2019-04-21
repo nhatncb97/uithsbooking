@@ -41,7 +41,7 @@ class RentalUpdate extends React.Component {
   }
 
   updateRental(rentalData) {
-    const {rental: {_id}, dispatch } = this.props;
+    const { rental: { _id }, dispatch } = this.props;
 
     dispatch(actions.updateRental(_id, rentalData));
   }
@@ -52,14 +52,14 @@ class RentalUpdate extends React.Component {
 
   verifyRentalOwner() {
     const rentalId = this.props.match.params.id;
-    this.setState({isFetching: true});
+    this.setState({ isFetching: true });
 
     return actions.verifyRentalOwner(rentalId).then(
       () => {
-        this.setState({isAllowed: true, isFetching: false})
+        this.setState({ isAllowed: true, isFetching: false })
       },
       () => {
-        this.setState({isAllowed: false, isFetching: false})
+        this.setState({ isAllowed: false, isFetching: false })
       });
   }
 
@@ -75,9 +75,9 @@ class RentalUpdate extends React.Component {
               <div className='row'>
                 <div className='col-md-6'>
                   <EditableImage entity={rental}
-                                 entityField={'image'}
-                                 errors={errors}
-                                 updateEntity={this.updateRental}> </EditableImage>
+                    entityField={'image'}
+                    errors={errors}
+                    updateEntity={this.updateRental}> </EditableImage>
                 </div>
                 <div className='col-md-6'>
                   <RentalMap location={`${rental.city}, ${rental.street}`} />
@@ -91,76 +91,76 @@ class RentalUpdate extends React.Component {
                   <div className='rental'>
                     <label className={`rental-label rental-type ${rental.category}`}> Shared </label>
                     <EditableSelect entity={rental}
-                                    entityField={'shared'}
-                                    className={`rental-type ${rental.category}`}
-                                    updateEntity={this.updateRental}
-                                    options={[true, false]}
-                                    containerStyle={{'display': 'inline-block'}}
-                                    errors={errors}
-                                    resetErrors={this.resetRentalErrors} />
+                      entityField={'shared'}
+                      className={`rental-type ${rental.category}`}
+                      updateEntity={this.updateRental}
+                      options={[true, false]}
+                      containerStyle={{ 'display': 'inline-block' }}
+                      errors={errors}
+                      resetErrors={this.resetRentalErrors} />
 
                     <EditableSelect entity={rental}
-                                    entityField={'category'}
-                                    className={`rental-type ${rental.category}`}
-                                    updateEntity={this.updateRental}
-                                    options={['apartment', 'house', 'condo']}
-                                    errors={errors}
-                                    resetErrors={this.resetRentalErrors} />
+                      entityField={'category'}
+                      className={`rental-type ${rental.category}`}
+                      updateEntity={this.updateRental}
+                      options={['apartment', 'house', 'condo']}
+                      errors={errors}
+                      resetErrors={this.resetRentalErrors} />
 
 
                     <div className="rental-owner">
-                      <img src="https://api.adorable.io/avatars/285/abott@adorable.png" alt="owner"/>
+                      <img src="https://api.adorable.io/avatars/285/abott@adorable.png" alt="owner" />
                       <span>{rental.user && rental.user.username}</span>
                     </div>
 
                     <EditableInput entity={rental}
-                                   entityField={'title'}
-                                   className={'rental-title'}
-                                   updateEntity={this.updateRental}
-                                   errors={errors}
-                                   resetErrors={this.resetRentalErrors}  />
+                      entityField={'title'}
+                      className={'rental-title'}
+                      updateEntity={this.updateRental}
+                      errors={errors}
+                      resetErrors={this.resetRentalErrors} />
 
                     <EditableInput entity={rental}
-                                   entityField={'city'}
-                                   className={'rental-city'}
-                                   updateEntity={this.updateRental}
-                                   errors={errors}
-                                   formatPipe={[toUpperCase]}
-                                   resetErrors={this.resetRentalErrors} />
+                      entityField={'city'}
+                      className={'rental-city'}
+                      updateEntity={this.updateRental}
+                      errors={errors}
+                      formatPipe={[toUpperCase]}
+                      resetErrors={this.resetRentalErrors} />
 
                     <EditableInput entity={rental}
-                                   entityField={'street'}
-                                   className={'rental-street'}
-                                   updateEntity={this.updateRental}
-                                   errors={errors}
-                                   resetErrors={this.resetRentalErrors} />
+                      entityField={'street'}
+                      className={'rental-street'}
+                      updateEntity={this.updateRental}
+                      errors={errors}
+                      resetErrors={this.resetRentalErrors} />
 
                     <div className='rental-room-info'>
                       <span><i className='fa fa-building'></i>
                         <EditableInput entity={rental}
-                                   entityField={'bedrooms'}
-                                   className={'rental-bedrooms'}
-                                   containerStyle={{'display': 'inline-block'}}
-                                   updateEntity={this.updateRental}
-                                   errors={errors}
-                                   resetErrors={this.resetRentalErrors}  /> bedrooms</span>
+                          entityField={'bedrooms'}
+                          className={'rental-bedrooms'}
+                          containerStyle={{ 'display': 'inline-block' }}
+                          updateEntity={this.updateRental}
+                          errors={errors}
+                          resetErrors={this.resetRentalErrors} /> bedrooms</span>
                       <span><i className='fa fa-user'></i> {rental.bedrooms + 4} guests</span>
                       <span><i className='fa fa-bed'></i> {rental.bedrooms + 2} beds</span>
                     </div>
-                    <EditableText  entity={rental}
-                                   entityField={'description'}
-                                   className={'rental-description'}
-                                   updateEntity={this.updateRental}
-                                   rows={6}
-                                   cols={50}
-                                   errors={errors}
-                                   resetErrors={this.resetRentalErrors}  />
+                    <EditableText entity={rental}
+                      entityField={'description'}
+                      className={'rental-description'}
+                      updateEntity={this.updateRental}
+                      rows={6}
+                      cols={50}
+                      errors={errors}
+                      resetErrors={this.resetRentalErrors} />
                     <hr></hr>
                     <RentalAssets />
                   </div>
                 </div>
                 <div className='col-md-4'>
-                 <Booking rental={rental} />
+                  <Booking rental={rental} />
                 </div>
               </div>
             </div>
@@ -170,7 +170,7 @@ class RentalUpdate extends React.Component {
     } else {
       return (
         <h1> Loading... </h1>
-        )
+      )
     }
   }
 }

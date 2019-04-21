@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-
+import {startSubmit, stopSubmit} from 'redux-form'
 import RegisterForm from './RegisterForm';
 import { Redirect } from 'react-router-dom';
-
+import {connect} from 'react-redux'
 import * as actions from 'actions';
 
 class Signup extends Component {
@@ -18,9 +18,10 @@ class Signup extends Component {
     }
 
     registerUser(userData) {
+        this.props.dispatch(startSubmit('registerForm'))
         actions.register(userData).then(
-            registered => this.setState({ redirect: true }),
-            errors => this.setState({ errors })
+            registered => this.setState({ redirect: true },()=>this.props.dispatch(stopSubmit('registerForm'))),
+            errors => {this.setState({ errors },()=>this.props.dispatch(stopSubmit('registerForm')))}
         );
     }
     render() {
@@ -52,5 +53,9 @@ class Signup extends Component {
         );
     }
 }
+function mapStateToProps(state) {
+    return {
+    }
+}
 
-export default Signup;
+export default connect(mapStateToProps)(Signup);

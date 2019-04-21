@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import ForgotPass from './forgot_pass_form';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
+import { stopSubmit, startSubmit } from "redux-form";
+
 class ForgotPassword extends Component {
     constructor() {
         super();
         this.sendMail = this.sendMail.bind(this);
+        this.state = {
+            isLoading : false
+        }
     }
 
     sendMail(userData) {
-        this.props.dispatch(actions.sendMail(userData));
+                
+        this.props.dispatch(actions.sendMail(userData))
     }
     render() {
         const  {isSend, errors}  = this.props;

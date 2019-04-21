@@ -24,12 +24,10 @@ class User extends Component {
     }
 
     onImageDrop(selectedFile) {
-        console.log(selectedFile)
         this.setState({
             imageFiles: selectedFile[0],
             isChange : true
         })
-        console.log(this.state.imageFiles)
         const myFilereader = new FileReader();
         myFilereader.addEventListener("load", () => {
             this.setState({
@@ -37,16 +35,13 @@ class User extends Component {
             })
         }, false)
         myFilereader.readAsDataURL(this.state.imageFiles);
-        console.log(this.state)
     }
     upload() {
         const file = this.state.imageFiles;
-        console.log(file);
         actions.uploadAvatar(file);
     }
     render() {
         const users = this.props.users.data;
-        console.log(users.rentals)
         const {isChange} = this.state;
         return (
             <div>

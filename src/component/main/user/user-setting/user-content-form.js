@@ -1,13 +1,15 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Input } from 'component/main/shared/form/Input';
+
 import { BwmResError } from 'component/main/shared/form/BwmResError';
 import { BwmSelect } from 'component/main/shared/form/BwmSelect';
 import { BwmTextArea } from 'component/main/shared/form/BwmTextArea';
-import { required, minLength4 } from 'component/main/shared/form/validators';
+import { updateUserValidate } from 'component/main/shared/form/validators';
 
 const userContentForm = props => {
-    const {username, email, address, phone, fullname, gender, description} = props.user
+    console.log(props)
+    const {username, email, address, phone, fullname, gender, description, initialValues} = props.user
     const { handleSubmit, pristine, submitting, submitCb, valid, errors, options, user } = props
     return (
         <form onSubmit={handleSubmit(submitCb)}>
@@ -23,7 +25,6 @@ const userContentForm = props => {
                             id='email'
                             defaultValue={email}
                             component={Input}
-                            validate={[required, minLength4]}
                         />
 
                     </div>
@@ -37,7 +38,6 @@ const userContentForm = props => {
                             id='fullname'
                             defaultValue={fullname}
                             component={Input}
-                            // validate={[required, minLength4]}
                         />
                     </div>
                 </div>
@@ -52,7 +52,6 @@ const userContentForm = props => {
                             id='password'
                             defaultValue={username}
                             component={Input}
-                        validate={[required, minLength4]}
                         />
 
                     </div>
@@ -81,7 +80,7 @@ const userContentForm = props => {
                             defaultValue={gender}
                             component={BwmSelect}
                             options={options}
-                        // validate={[required, minLength4]}
+                            defaultValue={gender}
                         >
                             {/* <option selected disabled hidden>Giới tính</option>
                         <option value="male">Nam</option>
@@ -100,7 +99,6 @@ const userContentForm = props => {
                             id='address'
                             defaultValue={address}
                             component={Input}
-                            // validate={[required, minLength4]}
                         />
                         <br />
                         <label>Số nhà đã đặt</label>
@@ -120,7 +118,6 @@ const userContentForm = props => {
                             defaultValue={description}
                             rows='8'
                             component={BwmTextArea}
-                            // validate={[required, minLength4]}
                         />
                     </div>
                 </div>
@@ -131,7 +128,7 @@ const userContentForm = props => {
                     <div className="col-lg-4">
                     </div>
                     <div className="col-lg-4">
-                        <button type="submit" className="b b1 center_button">Lưu thay đổi</button>
+                        <button type="submit" className="b b1 center_button" disabled={!valid||submitting}>Lưu thay đổi</button>
                     </div>
                     <div className="col-lg-4">
                     </div>
@@ -146,5 +143,8 @@ const userContentForm = props => {
 }
 
 export default reduxForm({
-    form: 'userContentForm'
+    form: 'userContentForm',
+    enableReinitialize: true
+    // validate: updateUserValidate
+    
 })(userContentForm)
