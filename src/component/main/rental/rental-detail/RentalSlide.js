@@ -4,7 +4,8 @@ import Slider from "react-slick";
 function renderImage(image) {
     if (Array.isArray(image))
         return (image.map(i => {
-            return (<div>
+            return (
+                <div>
                     <img className="resize" src={i} />
                 </div>)
         }))
@@ -27,7 +28,6 @@ export function VariableWidth(props) {
         <div>
             <Slider {...settings}>
                 {renderImage(props.rental)}
-                
             </Slider>
         </div>
     );

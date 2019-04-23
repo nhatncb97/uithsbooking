@@ -3,4 +3,29 @@
 
   .divide{
     margin-top: 20px;
-  } }
+  }
+  .resize {
+    height: 200px;
+    width: auto;
+    padding: 5px;
+  }
+  .resize1 {
+    height: 200px;
+    width: 100%;
+  }
+  .slick-track{
+    height: 200px;
+  }
+}
+
+
+.resize {
+  height: 400px;
+  width: auto;
+  padding: 5px;
+}
+.resize1 {
+  height: 400px;
+  width: 100%;
+}
+

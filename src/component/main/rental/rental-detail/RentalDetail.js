@@ -51,11 +51,8 @@ class RentalDetail extends Component {
     {console.log(this.state)};
     return (
       <div>
+        <RentalImages image={this.props.rental.image} />
         <div className="container">
-          <RentalImages image={this.props.rental.image} />
-          <br />
-          <br />
-          <br />
           <div>
             <div className="col-sm-8">
               <div>

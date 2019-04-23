@@ -22,7 +22,7 @@ export function RentalImages(props) {
     return (
         <div style={{ marginTop: "20px", marginBottom: "20px" }}>
                     <VariableWidth rental={props.image} className="resize1" />
-                </div>
+        </div>
     )
 }
 export default RentalImages;

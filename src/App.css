@@ -999,7 +999,7 @@ LEVEL 4. SETTINGS
 .center_button {
   width: 30%;
   margin-left: 35%;
-  margin-right: 3%; }
+  margin-right: 35%; }
 
 @media screen and (max-width: 1000px) {
   .dbox {
@@ -1602,6 +1602,26 @@ LEVEL 4. SETTINGS
     transform: scale(0.8); } }
 @media screen and (max-width: 800px) {
   .divide {
-    margin-top: 20px; } }
+    margin-top: 20px; }
+
+  .resize {
+    height: 200px;
+    width: auto;
+    padding: 5px; }
+
+  .resize1 {
+    height: 200px;
+    width: 100%; }
+
+  .slick-track {
+    height: 200px; } }
+.resize {
+  height: 400px;
+  width: auto;
+  padding: 5px; }
+
+.resize1 {
+  height: 400px;
+  width: 100%; }
 
 /*# sourceMappingURL=App.css.map */
