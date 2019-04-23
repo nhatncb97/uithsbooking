@@ -86,7 +86,7 @@
     content: '';
     position: fixed;
     overflow: hidden;
-    margin-top: -25%;
+    margin-top: -40%;
     padding: 0 0;
     height: 100% !important;
     width: auto !important;
@@ -410,6 +410,23 @@ LEVEL 4. SETTINGS
 
 
 @media screen and (max-width: 800px) {
+  .center_button {
+    width: 40%!important;
+    margin-left: 30%!important;
+    margin-right: 30% !important; }
+
+  .checkb {
+    padding-left: 22%;
+  }
+}
+
+
+.center_button {
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%; }
+
+@media screen and (max-width: 1000px) {
   .dbox {
     margin-left: 0%;
     margin-right: 0%;
@@ -420,9 +437,5 @@ LEVEL 4. SETTINGS
     padding-left: 10%;
     padding-right: 10%;
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13), 1px 2px 2px rgba(0, 0, 0, 0.1), -1px -2px 2px rgba(0, 0, 0, 0.05);
-  }
-
-  .checkb {
-    padding-left: 22%;
   }
 }

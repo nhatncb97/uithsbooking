@@ -732,7 +732,7 @@ footer {
     content: '';
     position: fixed;
     overflow: hidden;
-    margin-top: -25%;
+    margin-top: -40%;
     padding: 0 0;
     height: 100% !important;
     width: auto !important;
@@ -989,6 +989,19 @@ LEVEL 4. SETTINGS
   padding-left: 15%; }
 
 @media screen and (max-width: 800px) {
+  .center_button {
+    width: 40% !important;
+    margin-left: 30% !important;
+    margin-right: 30% !important; }
+
+  .checkb {
+    padding-left: 22%; } }
+.center_button {
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 3%; }
+
+@media screen and (max-width: 1000px) {
   .dbox {
     margin-left: 0%;
     margin-right: 0%;
@@ -998,10 +1011,7 @@ LEVEL 4. SETTINGS
     padding-bottom: 10%;
     padding-left: 10%;
     padding-right: 10%;
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13), 1px 2px 2px rgba(0, 0, 0, 0.1), -1px -2px 2px rgba(0, 0, 0, 0.05); }
-
-  .checkb {
-    padding-left: 22%; } }
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13), 1px 2px 2px rgba(0, 0, 0, 0.1), -1px -2px 2px rgba(0, 0, 0, 0.05); } }
 .pd-left-20 {
   padding-left: 20px; }
 
@@ -1072,14 +1082,14 @@ LEVEL 4. SETTINGS
   border-left-color: #566473; }
 
 .dbox {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 30%;
+  margin-right: 30%;
   background-color: white;
   border-radius: 1%;
-  padding-top: 10%;
-  padding-bottom: 10%;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-top: 3%;
+  padding-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13), 1px 2px 2px rgba(0, 0, 0, 0.1), -1px -2px 2px rgba(0, 0, 0, 0.05); }
 
 .infobox {
@@ -1102,7 +1112,7 @@ LEVEL 4. SETTINGS
   padding-right: 1px;
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13), 1px 2px 2px rgba(0, 0, 0, 0.1), -1px -2px 2px rgba(0, 0, 0, 0.05); }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   .dbox {
     margin-left: 0%;
     margin-right: 0%;
@@ -1112,8 +1122,8 @@ LEVEL 4. SETTINGS
     padding-bottom: 5%;
     padding-left: 5%;
     padding-right: 5%;
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13), 1px 2px 2px rgba(0, 0, 0, 0.1), -1px -2px 2px rgba(0, 0, 0, 0.05); }
-
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13), 1px 2px 2px rgba(0, 0, 0, 0.1), -1px -2px 2px rgba(0, 0, 0, 0.05); } }
+@media screen and (max-width: 800px) {
   .dbox2 {
     display: none; } }
 #rent {
@@ -1224,6 +1234,16 @@ LEVEL 4. SETTINGS
     #rent {
       /*new*/
       /**/ }
+      #rent .dbox {
+        margin-left: 0%;
+        margin-right: 0%;
+        background-color: white;
+        border-radius: 1%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.13), 1px 2px 2px rgba(0, 0, 0, 0.1), -1px -2px 2px rgba(0, 0, 0, 0.05); }
       #rent .row-eq-height {
         display: block !important; } }
 
