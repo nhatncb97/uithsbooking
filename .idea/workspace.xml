@@ -5,9 +5,7 @@
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalDetail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalImages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalImages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalSlide.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalSlide.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/_rent_info.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/_rent_info.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/_user.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/_user.scss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -47,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scss/_user.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="420" column="1" lean-forward="true" selection-start-line="420" selection-start-column="1" selection-end-line="420" selection-end-column="1" />
+            <state relative-caret-position="477">
+              <caret line="264" selection-start-line="264" selection-end-line="264" />
             </state>
           </provider>
         </entry>
@@ -82,11 +80,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalDetail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
+            <state relative-caret-position="117">
+              <caret line="116" column="73" selection-start-line="116" selection-start-column="73" selection-end-line="116" selection-end-column="73" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -118,7 +116,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scss/_rent_info.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
@@ -138,7 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>style</find>
       <find>na-</find>
       <find>na-sign</find>
       <find>home-button</find>
@@ -168,6 +165,7 @@
       <find>bg</find>
       <find>center</find>
       <find>VariableWidth</find>
+      <find>slide</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -231,12 +229,12 @@
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/App.css.map" />
         <option value="$PROJECT_DIR$/src/scss/_box.scss" />
-        <option value="$PROJECT_DIR$/src/scss/_user.scss" />
         <option value="$PROJECT_DIR$/src/component/main/booking/BookingManageCard.js" />
         <option value="$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalSlide.js" />
         <option value="$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalImages.js" />
-        <option value="$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalDetail.js" />
         <option value="$PROJECT_DIR$/src/scss/_rent_info.scss" />
+        <option value="$PROJECT_DIR$/src/scss/_user.scss" />
+        <option value="$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalDetail.js" />
       </list>
     </option>
   </component>
@@ -463,12 +461,12 @@
       <workItem from="1553053318351" duration="289000" />
       <workItem from="1553060811241" duration="1102000" />
       <workItem from="1553063347444" duration="3273000" />
-      <workItem from="1555989287982" duration="5312000" />
+      <workItem from="1555989287982" duration="5881000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149044000" />
+    <option name="totallyTimeSpent" value="149613000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -777,13 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scss/_user.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="420" column="1" lean-forward="true" selection-start-line="420" selection-start-column="1" selection-end-line="420" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/main/booking/list.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
@@ -824,9 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalAssets.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalSlide.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -847,20 +835,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalDetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scss/_rent_info.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scss/_user.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="264" selection-start-line="264" selection-end-line="264" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalAssets.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/main/rental/rental-detail/RentalDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="116" column="73" selection-start-line="116" selection-start-column="73" selection-end-line="116" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
